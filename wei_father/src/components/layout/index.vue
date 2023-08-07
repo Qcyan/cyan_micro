@@ -3,7 +3,7 @@
     <div class="side" style="width:100px;float:left">
 
       <div> <router-link to="/main/index">A</router-link></div>
-      <div><router-link to="/suborigin/sub_app">child</router-link></div>
+      <div><router-link to="/suborigin/suborigin">child</router-link></div>
 
     </div>
 

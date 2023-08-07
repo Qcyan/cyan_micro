@@ -5,8 +5,10 @@ import App from './App'
 import router from './router'
 
 import { initState } from '@/initQiankunState/index.js'
+import { makeAllRouter } from '@/makeAllComponentRouter/index.js'
 // 初始化qiankun
 initState()
+makeAllRouter()
 
 Vue.config.productionTip = false
 
