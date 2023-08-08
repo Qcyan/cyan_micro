@@ -11,12 +11,9 @@ module.exports = {
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
+  lintOnSave: false,
   devServer: {
-    port: 8090,
-    host: '0.0.0.0',
-    open: true,
-    useEslint: false,
-    https: true // 主要是这个配置
+    port: 8082
   },
   configureWebpack: {
     resolve: {
