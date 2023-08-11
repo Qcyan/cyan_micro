@@ -1,6 +1,6 @@
 <template>
-    <div>
-        is child page
+    <div class='hello'>
+        is child page page
     </div>
 </template>
 
@@ -13,3 +13,9 @@
 //   }
 // })
 </script>
+
+<style>
+.hello{
+  color:red
+}
+</style>

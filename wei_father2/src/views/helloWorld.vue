@@ -1,13 +1,14 @@
 <template>
   <div class="hello">
-    is child page page
+    is father page page
+
   </div>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
-  data () {
+  data() {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
@@ -16,9 +17,8 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
+<style >
 .hello{
-  color:red
+  color:green
 }
 </style>

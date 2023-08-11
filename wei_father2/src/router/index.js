@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 // import store from '@/store/index.js'
 // import { loadMicroApp } from 'qiankun'
 import Layout from '@/components/layout'
@@ -24,7 +23,7 @@ const routes = [
       {
         path: 'index',
         name: 'HelloWorld',
-        component: HelloWorld,
+        component: () => import('@/views/helloWorld'),
         meta: {
           title: '首页',
           icon: 'form'

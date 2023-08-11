@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import Layout from '@/components/layout'
 
 Vue.use(VueRouter)
@@ -9,7 +8,7 @@ const routes = [
   {
     path: '/',
     name: 'HelloWorld',
-    component: HelloWorld
+    component: () => import('@/views/helloWorld')
   }, {
     path: '/suborigin',
     name: 'suborigin',
