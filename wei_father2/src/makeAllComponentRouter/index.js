@@ -74,8 +74,7 @@ export const makeAllRouter = function() {
   }
 
   // 开始预加载
-  const preLoadArrSet = [...new Set(preLoadArr)]
-  console.log(preLoadArrSet, 'preLoadArr')
+  const preLoadArrSet = [...new Set(preLoadArr)]  // ['http://192.168.3.175:8082']
   // 暂存到vuex
   Vuex.commit('permission/CHANGE_PRELOAD', preLoadArrSet)
   const qiankunConfigArr = preLoadArrSet.map((preLoad, index) => {
@@ -85,7 +84,7 @@ export const makeAllRouter = function() {
     }
   })
   if (!window.hasPreloadSubApp) {
-    prefetchApps(qiankunConfigArr)
+    prefetchApps(qiankunConfigArr)   // 会预加载子应用的所有静态资源，无论子应用是否激活
     window.hasPreloadSubApp = true
   }
 }

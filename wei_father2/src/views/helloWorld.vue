@@ -12,6 +12,10 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  mounted() {
+    window.b = '456'
+    // console.log(a) "ReferenceError: a is not defined"
   }
 }
 </script>

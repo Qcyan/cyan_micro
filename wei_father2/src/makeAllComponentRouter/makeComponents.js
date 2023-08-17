@@ -8,10 +8,10 @@ import { splitUrl } from '@/utils/qiankunMethods.js'
 
 export const autoFillComponent = (element = {}, isFromSubApp = false) => {
   const pathSplit = splitUrl(element.url)
-  const host = pathSplit[0] // http://121.5.172.29:8081
-  const allPath = pathSplit[1] //
-  const query = pathSplit[2]
-  const queryForSearch = {}
+  const host = pathSplit[0] // http://192.168.3.175:8082
+  const allPath = pathSplit[1] // /suborigin/suborigin
+  const query = pathSplit[2] // undefined
+  const queryForSearch = {} // {}
   if (query) {
     const queryOnly = query.slice(1)
     console.log(queryOnly, 'queryOnly')
@@ -24,13 +24,15 @@ export const autoFillComponent = (element = {}, isFromSubApp = false) => {
       queryForSearch[key] = value
     }
   }
-  const splitPath = allPath.split('/')
-  const firstPath = splitPath[1]
+  const splitPath = allPath.split('/') // ['', 'suborigin', 'suborigin']
+  const firstPath = splitPath[1] // suborigin
   // isFromSubApp标识从subApp传来的跳转路由方式，因为qiankun的name必须唯一，
   // 所以防止打开多个基础路由相同详情页的情况下报错(因为name相同), 需要标记id+path 作为唯一的标识。
   // md5防止出现特殊字符
   // const identity = isFromSubApp ? `sub${md5(allPath)}` : element.id
-  const identity = isFromSubApp ? `sub${allPath}` : element.id
+  const identity = isFromSubApp ? `sub${allPath}` : element.id // sub_app
+
+
   return {
     path: `/${firstPath}${identity}`,
     meta: {
@@ -90,6 +92,7 @@ export const autoFillComponent = (element = {}, isFromSubApp = false) => {
               //   如果qiankunconfig有path就从qankun获取 如果没有去 默认的path
               this.routePath = this.$route.meta.qiankunConfig.routePath || this.$route.path
 
+              // 手动加载子应用
               this.microApp = loadMicroApp({
                 name: identity,
                 entry,

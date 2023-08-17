@@ -1,12 +1,16 @@
 import './public-path.js'
 import Vue from 'vue'
-import router from './router'
+// import router from './router'
+import VueRouter from 'vue-router'
 import App from './App.vue'
-import actions from './actions.js'
 import store from './store'
+import routes from './router'
+import actions from './actions.js'
 
 Vue.config.productionTip = false
 
+
+let router = null
 let appInstance = null
 
 function render (props = {}) {
@@ -18,6 +22,13 @@ function render (props = {}) {
   if (query) {
     window.queryFromQianKun = query
   }
+  // 如果有routePath从qiankun注入，说明当前是需要手动加载，路由模式为abstract
+  const mode = window.__POWERED_BY_QIANKUN__ ? (routePath ? 'abstract' : 'history') : 'history'
+  router = new VueRouter({
+    scrollBehavior: () => ({ y: 0 }),
+    mode,
+    routes: routes
+  })
   // 如果有container从qiankun注入，要把dom绑定到qiankun提供的dom内。因为qiankun体系中dom是隔离状态
   appInstance = new Vue({
     el: container ? container.querySelector('#app') : '#app',
